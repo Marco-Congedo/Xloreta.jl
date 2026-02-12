@@ -45,7 +45,7 @@ Execute the following command in julia's REPL:
 ]add Loreta
 ```
 
-There is virtually no requirement for this package. Any Julia version starting at 0.7 would work.
+*julia* version 1.10+
 
 [▲ index](#-index)
 
@@ -84,6 +84,7 @@ j(t) = T x(t).
 It is not unique. Each inverse solution method yields a different transfer matrix
 
 T ∈ ℝ³ᵖ×ⁿ,
+
 the computation of which is the main purpose of this package.
 
 > [!NOTE] 
@@ -102,7 +103,7 @@ the computation of which is the main purpose of this package.
 > Overall, eLORETA is known to be an excellent choice, as it provides stable results without requiring fine-tuned noise level estimation [^12].
 
 > [!WARNING] 
-> Throughout this documentation and in the package it is always assumed both the input data and the leadfield matrix is referenced to the common average --- see [centeringMatrix](#centeringmatrix).
+> Throughout this documentation and in the package it is always assumed both the input data and the leadfield matrix are referenced to the common average --- see [centeringMatrix](#centeringmatrix).
 
 [▲ index](#-index)
 
@@ -196,11 +197,11 @@ function psfErrors(K::Matrix{R}, T::Matrix{R}) where R<:Real
 
 Return the 3-tuple of vectors holding errors obtained at each voxel (test location) and for each component (x, y, z):
 
-1. Localization errors (bool)
+1. *Localization errors* (bool),
     true if the maximum current density magnitude is not located in the test location, false otherwise.
-2. Spread errors (Float)
+2. *Spread errors* (Float),
     log of the sum of current density squared magnitude in the entire volume divided by the current density squared magnitude in the test location.
-3. Equalization errors (Float)
+3. *Equalization errors* (Float),
     uncorrected variance of the current density squared magnitude across the entire volume (all locations, i.e., all voxels)
 
 [▲ API index](#-api)
@@ -228,7 +229,7 @@ if optional keyword argument `W` is a vector of 3p non-negative weights, compute
 equal to `:modelDriven` (default), as a weighted data-driven solution is not defined.
 
 > [!IMPORTANT] 
-> if passed as a matrix, `C` must be non-singular. No check is performed.
+> If passed as a matrix, `C` must be non-singular. No check is performed.
 > 
 > The columns of the leadfield matrix must be centered (common average reference).
 > 
@@ -255,7 +256,7 @@ if `C` is `:modelDriven` (default), compute the model driven solution, otherwise
 data-driven solution, which is similar (actually better) to the linearly constrained minimum variance beamformer — see [here](https://github.com/Marco-Congedo/Loreta.jl/blob/master/Documents/Overview.pdf).
 
 > [!IMPORTANT] 
-> if passed as a matrix, `C` must be non-singular. No check is performed.
+> If passed as a matrix, `C` must be non-singular. No check is performed.
 > 
 > The columns of the leadfield matrix must be centered (common average reference).
 > 
@@ -290,7 +291,7 @@ The model-driven solution is iterative; the convergence at each iteration is pri
 to vanish for about half the significant digits.
 
 > [!IMPORTANT] 
-> if passed as a matrix, `C` must be non-singular. No check is performed.
+> If passed as a matrix, `C` must be non-singular. No check is performed.
 > 
 > The columns of the leadfield matrix must be centered (common average reference).
 > 
@@ -303,7 +304,7 @@ to vanish for about half the significant digits.
 ---
 ## 💡 Examples
 
-To use this package, all you will need is here below, where it is understood that you replace the example data matrix `X` of dimension sxn, where s is the number of samples and n the number of samples, and leadfield matrix K, of dimension nx3p, where p is the number of voxels used to create the leadfield, with your own data and leadfield:
+To use this package, all you will need is here below, where it is understood that you replace the example data matrix `X` and the leadfield matrix K with your own data and leadfield:
 
 ```julia
 using Xloreta
