@@ -1,6 +1,6 @@
 name = "Xloreta"
 uuid = "1065177d-3187-4367-82d7-a0dd2e6bc05e"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Marco Congedo <marco.congedo@gmail.com>"]
 
 [deps]
