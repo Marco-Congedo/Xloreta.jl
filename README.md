@@ -318,7 +318,7 @@ K = ℌ(n)*randn(n, 3p)
 X=randn(s, n)
 
 # random weights for weighted minimum norm solutions
-weights=abs.(randn(p))
+weights=abs.(randn(3p))
 
 # - - -
 

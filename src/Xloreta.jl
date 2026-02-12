@@ -13,7 +13,7 @@
 # sLORETA           | sLORETA transformation Matrix
 # eLORETA           | eLORETA transformation Matrix
 
-module Loreta
+module Xloreta
 
 using LinearAlgebra, Statistics
 

@@ -13,6 +13,6 @@
 #
 begin
   push!(LOAD_PATH, abspath(@__DIR__, "..") )
-  using Revise, Loreta
+  using Revise, Xloreta
 end
 
