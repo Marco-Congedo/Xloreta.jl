@@ -1,6 +1,6 @@
 name = "Xloreta"
 uuid = "1065177d-3187-4367-82d7-a0dd2e6bc05e"
-version = "0.1.6"
+version = "0.1.7"
 authors = ["Marco Congedo <marco.congedo@gmail.com>"]
 
 [deps]
@@ -12,7 +12,7 @@ Test = "1.11.0"
 julia = "1.10"
 
 [extras]
-Test = "8dfed614-e22c-5e08-85e1-65c5234f2afa"
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 
 [targets]
 test = ["Test"]
