@@ -46,7 +46,13 @@ For all of them, the usual *model-driven* and the *data-driven* [^4] versions ar
 Execute the following command in julia's REPL:
 
 ```julia
-]add Xloreta
+using Pkg
+Pkg.add("Xloreta")
+```
+
+To test the package:
+```julia
+Pkg.test("Xloreta")
 ```
 
 [▲ index](#-index)
@@ -188,7 +194,7 @@ psfLocError(K::Matrix{R}, T::Matrix{R}) where R<:Real
 
 Given a n × 3p leadfield matrix `K` and an associated 3p × n transfer matrix `T`, where n is the number of electrodes and 3p is the number of p voxels times 3 (the x, y, z source components), return the number of localization errors obtained by point spread functions — see 🔣 [here](#-problem-statement-notation-and-nomenclature).
 
-Any time you create a transfer matrix `T` for a given leadfield matrix `K`, you should test it with this function — see the 💡 [examples](#-examples).
+Any time you create a sLORETA or eLORETA transfer matrix `T` for a given leadfield matrix `K`, you should test it with this function — see the 💡 [examples](#-examples).
 
 [▲ API index](#-api)
 
@@ -282,8 +288,8 @@ data-driven solution, which is similar (actually better) to the linearly constra
 function eLORETA(K::Matrix{R},
                  α::Real=0.,
                  C::Union{Symbol, Symmetric{R}, Hermitian{R}}=:modelDriven,
-                 tol::Real=0.,
-                 verbose=true) where R<:Real
+                 tol::Real=0.0;
+            verbose=true) where R<:Real
 ```
 
 Given a n × 3p leadfield matrix, where n is the number of electrodes and 3p is the number of p voxels times 3 (the x, y, z source components),
