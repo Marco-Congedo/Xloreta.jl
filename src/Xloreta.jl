@@ -92,7 +92,7 @@ end
 # NB the columns of the leadfield matrix must be centered (common average ref.)
 function minNorm(K::Matrix{R},
                  α::Real=0.,
-                 C::Union{Symbol, Matrix{R}}=:modelDriven;
+                 C::Union{Symbol, Symmetric{R}, Hermitian{R}}=:modelDriven;
                  W::Union{Vector{R}, Nothing}=nothing) where R<:Real
 
   Ne, Nv✖3 = size(K)
@@ -107,7 +107,7 @@ function minNorm(K::Matrix{R},
       return
     end
 
-    if C isa Matrix{R}
+    if !(C isa Symbol)
       @warn "function Loreta.minimunNorm: cannot apply weight to a data-driven solution. Weights will be ignored"
       W=nothing
     end
@@ -134,7 +134,7 @@ end
 # NB the columns of the leadfield matrix must be centered (common average ref.)
 function sLORETA(K::Matrix{R},
                  α::Real=0.,
-                 C::Union{Symbol, Matrix{R}}=:modelDriven) where R<:Real
+                 C::Union{Symbol, Symmetric{R}, Hermitian{R}}=:modelDriven) where R<:Real
   (Ne, Nv✖3), Nv = size(K), size(K, 2)÷3
   T = Matrix{eltype(K)}(undef, Nv✖3, Ne) # allocate memory for the output
 
@@ -166,7 +166,7 @@ end
 # NB the columns of the leadfield matrix must be centered (common average ref.)
 function eLORETA(K::Matrix{R},
                  α::Real=0.,
-                 C::Union{Symbol, Matrix{R}}=:modelDriven,
+                 C::Union{Symbol, Symmetric{R}, Hermitian{R}}=:modelDriven,
                  tol::Real=0.,
                  verbose=true) where R<:Real
 
