@@ -1,3 +1,7 @@
+✅ Vector and Matrices
+𝐊 𝐓 𝐇 𝐈 𝐉 𝐗 𝐘 𝐣 𝐱
+𝟬  𝟭  𝟮  𝟯  𝟰  𝟱  𝟲  𝟳  𝟴  𝟵
+
 ✅ Sets & spaces
 ℝ   real numbers
 ℂ   complex numbers
