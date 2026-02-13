@@ -91,13 +91,13 @@ the computation of which is the main purpose of this package.
 
 > [!IMPORTANT] 
 > A solution is said *genuine* or to *respect the measurement* if 
-> 𝐊 𝐓 = I.
+> 𝐊 𝐓 = 𝐈.
 > The weighted minimum norm and eLORETA are genuine solutions, while sLORETA is not.
 >
 > Also, matrix 
 > 𝐓 𝐊 ≠ 𝐈 
 > is called the resolution matrix [^11]. Its successive groups of three columns, one group per voxel, are called the point-spread functions. 
-> They allow one to ascertain whether the transfer matrix is capable of correctly localizing a single current dipole, regardless of its position (voxel) and orientation.
+> They allow to ascertain whether the transfer matrix is capable of correctly localizing a single current dipole, regardless of its position (voxel) and orientation.
 >
 > This is a minimal localization capability for an inverse solution, as it (unrealistically) assumes the absence of noise in the measurement and the existence of only one active dipole at a time. Nonetheless, it is a minimal requirement. sLORETA and eLORETA possess this property, while the minimum norm does not, like most inverse solution methods found in the literature.
 
@@ -105,7 +105,7 @@ the computation of which is the main purpose of this package.
 > Overall, eLORETA is known to be an excellent choice, as it provides stable results without requiring fine-tuned noise level estimation [^12].
 
 > [!WARNING] 
-> Throughout this documentation and in the package it is always assumed both the input data and the leadfield matrix are referenced to the common average --- see [centeringMatrix](#centeringmatrix).
+> Throughout this documentation and in the package it is always assumed both the input data and the leadfield matrix are referenced to the common average — see [centeringMatrix](#centeringmatrix).
 
 [▲ index](#-index)
 
@@ -138,11 +138,11 @@ Let 𝐗 be the s×n EEG recording, where s and n denote the number of samples a
 
 is the CAR (or centered) data.
 
-𝐇ₙ is named the common average reference operator. It is given by — see for example p.67 in [^13] —
+𝐇ₙ is named the common average reference operator. It is given by 
 
-𝐇ₙ = 𝐈ₙ − (1/n) (𝟭ₙ 𝟭ₙᵀ)
+𝐇ₙ = 𝐈ₙ − (1/n) (𝟭ₙ 𝟭ₙᵀ),
 
-where 𝐈ₙ is the N-dimensional identity matrix and 𝟭ₙ is the n-dimensional vector of ones.
+where 𝐈ₙ is the n-dimensional identity matrix and 𝟭ₙ is the n-dimensional vector of ones — see for example p.67 in [^13].
 
 Alias ℌ (U+210C, with escape sequence "frakH")
 
@@ -159,9 +159,9 @@ Return the n×n centering matrix.
 function cd2sm(j::Vector{R}) where R<:Real
 ```
 
-'current density to squared magnitude'. 
+'cd2sm' stands for 'current density to squared magnitude'. 
 
-Return the current density squared magnitude vector comprised of 1/3 of the elements of the input current density vector j. The current density vector j holds successively the triplets (x, y, z). Return the successive sums (x²+y²+z²) for each triplet.
+Return the current density squared magnitude vector comprised of 1/3 of the elements of the input current density vector `j`. The current density vector `j` holds successively the triplets (x, y, z). Return the successive sums (x²+y²+z²) for each triplet.
 
 The input vector `j` may contain any exact multiple of 3 number of elements.
 
@@ -175,11 +175,11 @@ The input vector `j` may contain any exact multiple of 3 number of elements.
 ---
 ### psfLocError
 
-'point spread function Localization Error'
+'psfLocError' stands for 'point spread functions Localization Error'
 
-Return the number of localization errors obtained by point spread functions given a leadfield matrix K and a corresponding transformation matrix T — see 🔣 [here](#-problem-statement-notation-and-nomenclature).
+Return the number of localization errors obtained by point spread functions given a leadfield matrix `K` and a corresponding transformation matrix `T` — see 🔣 [here](#-problem-statement-notation-and-nomenclature).
 
-When you create a transfer matrix T, you should test it with this function — see the [examples](#-examples).
+Any time you create a transfer matrix `T`, you should test it with this function — see the [examples](#-examples).
 
 ```julia
 psfLocError(K::Matrix{R}, T::Matrix{R}) where R<:Real
@@ -195,15 +195,15 @@ psfLocError(K::Matrix{R}, T::Matrix{R}) where R<:Real
 ```julia
 function psfErrors(K::Matrix{R}, T::Matrix{R}) where R<:Real
 ```
-'point spread function Errors'
+'psfErrors' stands for 'point spread function Errors'
 
-Return the 3-tuple of vectors holding errors obtained at each voxel (test location) and for each component (x, y, z):
+Return the 3-tuple of vectors holding errors obtained for each component (x, y, z) at each voxel (test locations):
 
-1. *Localization errors* (bool),
-    true if the maximum current density magnitude is not located in the test location, false otherwise.
-2. *Spread errors* (Float),
-    log of the sum of current density squared magnitude in the entire volume divided by the current density squared magnitude in the test location.
-3. *Equalization errors* (Float),
+1. *Localization errors* (bool vector),
+    true if the maximum current density magnitude is not located in the test component/location, false otherwise.
+2. *Spread errors* (Float vector),
+    log of the sum of current density squared magnitude in the entire volume divided by the current density squared magnitude in the test component/location.
+3. *Equalization errors* (Float vector),
     uncorrected variance of the current density squared magnitude across the entire volume (all locations, i.e., all voxels)
 
 [▲ API index](#-api)
