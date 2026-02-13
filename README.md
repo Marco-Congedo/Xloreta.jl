@@ -241,7 +241,7 @@ equal to `:modelDriven` (default), as a weighted data-driven solution is not def
 > 
 > The columns of the leadfield matrix must be centered (common average reference).
 > 
-> A suitable regularization parameter `α`>0 should be found by cross-validation or any other suitable method. Never assume an arbitrary value is suitable.
+> A suitable regularization parameter `α`> 0 should be found by cross-validation or any other suitable method. Never assume an arbitrary value is suitable.
 
 [▲ API index](#-api)
 
@@ -268,7 +268,7 @@ data-driven solution, which is similar (actually better) to the linearly constra
 > 
 > The columns of the leadfield matrix must be centered (common average reference).
 > 
-> A suitable regularization parameter `α`>0 should be found by cross-validation or any other suitable method. Never assume an arbitrary value is suitable.
+> A suitable regularization parameter `α`> 0 should be found by cross-validation or any other suitable method. Never assume an arbitrary value is suitable.
 
 [▲ API index](#-api)
 
