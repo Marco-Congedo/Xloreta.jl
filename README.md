@@ -1,6 +1,7 @@
-> In memory of **Ferdinando Lopes Da Silva**
 
 ![header](Documents/header.png)
+
+---
 
 > [!TIP] 
 > 🦅
@@ -8,7 +9,9 @@
 
 ---
 
-**Loreta** is a pure-[julia](https://julialang.org/) 100%-human package for computing, testing and using human EEG 
+# Xloreta
+
+This is a pure-[julia](https://julialang.org/) 100%-human package for computing, testing and using human EEG 
 (Electroencephalography) inverse solutions of the *Minimum Norm* family. Particularly, it implements the following vector-type distributed inverse solutions:
 - *weighted minimum norm* — see [^1] for a review,
 - *standardized Low-Resolution Electromagnetic Tomography* (sLORETA) [^2],
