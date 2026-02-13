@@ -59,7 +59,7 @@ We are given an EEG sensor potentials measurement
 
 𝐱(𝑡) ∈ ℝⁿ 
 
-at n electrodes referenced to the common average, in μV units, where t is time (samples);
+at n electrodes referenced to the common average, in μV units, where 𝑡 is discrete time (samples);
 
 we wish to estimate the current density
 
@@ -87,7 +87,7 @@ It is not unique. Each inverse solution method yields a different transfer matri
 
 𝐓 ∈ ℝ³ᵖ×ⁿ,
 
-the computation of which is the main purpose of this package.
+the computation of which is the main purpose of this package. For details on the composition of the 𝐊 and 𝐓 matrices the see [^8].
 
 > [!IMPORTANT] 
 > A solution is said *genuine* or to *respect the measurement* if 
@@ -175,15 +175,15 @@ The input vector `j` may contain any exact multiple of 3 number of elements.
 ---
 ### psfLocError
 
-'psfLocError' stands for 'point spread functions Localization Error'
-
-Return the number of localization errors obtained by point spread functions given a leadfield matrix `K` and a corresponding transformation matrix `T` — see 🔣 [here](#-problem-statement-notation-and-nomenclature).
-
-Any time you create a transfer matrix `T`, you should test it with this function — see the [examples](#-examples).
-
 ```julia
 psfLocError(K::Matrix{R}, T::Matrix{R}) where R<:Real
 ```
+
+'psfLocError' stands for 'point spread functions Localization Error'
+
+Given a nx3p leadfield matrix `K` and an associated 3pxn transfer matrix `T`, where n is the number of electrodes and 3p is the number of p voxels times 3 (the x, y, z source components), return the number of localization errors obtained by point spread functions — see 🔣 [here](#-problem-statement-notation-and-nomenclature).
+
+Any time you create a transfer matrix `T` for a given leadfield `K`, you should test it with this function — see the 💡 [examples](#-examples).
 
 [▲ API index](#-api)
 
@@ -197,7 +197,7 @@ function psfErrors(K::Matrix{R}, T::Matrix{R}) where R<:Real
 ```
 'psfErrors' stands for 'point spread function Errors'
 
-Return the 3-tuple of vectors holding errors obtained for each component (x, y, z) at each voxel (test locations):
+Given a nx3p leadfield matrix `K` and an associated 3pxn transfer matrix `T`, where n is the number of electrodes and 3p is the number of p voxels times 3 (the x, y, z source components), return the 3-tuple of vectors holding 3p errors obtained for each component (x, y, z) at each voxel (test locations):
 
 1. *Localization errors* (bool vector),
     true if the maximum current density magnitude is not located in the test component/location, false otherwise.
@@ -221,7 +221,7 @@ function minNorm(K::Matrix{R},
                  W::Union{Vector{R}, Nothing}=nothing) where R<:Real
 ```
 
-Given a Nx3p leadfield matrix, where N is the number of electrodes and 3p is the number of voxels p times 3 (the x, y, z source components),
+Given a nx3p leadfield matrix, where n is the number of electrodes and 3p is the number of p voxels times 3 (the x, y, z source components),
 return the **minimum norm regularized transfer matrix** with regularization `α`.
 
 if `C` is `:modelDriven` (default), compute the model driven solution, otherwise `C` must be the data covariance matrix and in this case compute the
@@ -251,7 +251,7 @@ function sLORETA(K::Matrix{R},
                  C::Union{Symbol, Matrix{R}}=:modelDriven) where R<:Real
 ```
 
-Given a Nx3p leadfield matrix, where N is the number of electrodes and 3p is the number of voxels p times 3 (the x, y, z source components),
+Given a nx3p leadfield matrix, where n is the number of electrodes and 3p is the number of p voxels times 3 (the x, y, z source components),
 return the **sLORETA transfer matrix** with regularization `α`.
 
 if `C` is `:modelDriven` (default), compute the model driven solution, otherwise `C` must be the data covariance matrix and in this case compute the
@@ -281,7 +281,7 @@ function eLORETA(K::Matrix{R},
                  verbose=true) where R<:Real
 ```
 
-Given a Nx3p leadfield matrix, where N is the number of electrodes and 3p is the number of voxels p times 3 (the x, y, z source components),
+Given a nx3p leadfield matrix, where n is the number of electrodes and 3p is the number of p voxels times 3 (the x, y, z source components),
 return the **eLORETA transfer matrix** with regularization `α`.
 
 if `C` is `:modelDriven` (default), compute the model driven solution, otherwise `C` must be the data covariance matrix and in this case compute the
