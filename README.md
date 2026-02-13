@@ -19,7 +19,6 @@ This is a pure-[julia](https://julialang.org/) 100%-human package for computing,
 
 For all of them, the usual *model-driven* and the *data-driven* [^4] versions are provided, with the latter being actually *beamformers* like in [^5] [^6] [^7] and being little known in the current literature.
 
-> [!TIP] 
 > All mathematical details can be found in [^1] [^2] [^3] [^4] [^8].
 >
 > An overview of the formula involved in the implementation is [here](https://github.com/Marco-Congedo/Loreta.jl/blob/master/Documents/Overview.pdf).
@@ -34,7 +33,7 @@ For all of them, the usual *model-driven* and the *data-driven* [^4] versions ar
 - 🔣 [Problem Statement, Notation and Nomenclature](#-problem-statement-notation-and-nomenclature)
 - 🔌 [API](#-api)
 - 💡 [Examples](#-examples)
-- ✍️ [About the author](#️-about-the-author)
+- ✍️ [About the Author](#️-about-the-author)
 - 🌱 [Contribute](#-contribute)
 - 🎓 [References](#-references)
 
@@ -42,13 +41,13 @@ For all of them, the usual *model-driven* and the *data-driven* [^4] versions ar
 
 ## 📦 Installation
 
+*julia* version 1.10+ is required.
+
 Execute the following command in julia's REPL:
 
 ```julia
-]add Loreta
+]add Xloreta
 ```
-
-*julia* version 1.10+
 
 [▲ index](#-index)
 
@@ -90,7 +89,7 @@ T ∈ ℝ³ᵖ×ⁿ,
 
 the computation of which is the main purpose of this package.
 
-> [!NOTE] 
+> [!IMPORTANT] 
 > A solution is said *genuine* or to *respect the measurement* if 
 > K T = I.
 > The weighted minimum norm and eLORETA are genuine solutions, while sLORETA is not.
@@ -349,7 +348,7 @@ psfLocError(K, TeLor1) == 0 ? println("OK") : println("Error")
 [▲ index](#-index)
 
 ---
-## ✍️ About the author
+## ✍️ About the Author
 
 [Marco Congedo](https://sites.google.com/site/marcocongedo) is a Research Director of [CNRS](http://www.cnrs.fr/en) (Centre National de la Recherche Scientifique), working at [UGA](https://www.univ-grenoble-alpes.fr/english/) (University of Grenoble Alpes). **Contact**: first name dot last name at gmail dot com.
 
