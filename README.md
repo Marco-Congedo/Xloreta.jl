@@ -223,7 +223,7 @@ Given a n × 3p leadfield matrix `K` and an associated 3p × n transfer matrix `
 ```julia
 function minNorm(K::Matrix{R},
                  α::Real=0.,
-                 C::Union{Symbol, Matrix{R}}=:modelDriven;
+                 C::Union{Symbol, Symmetric{R}, Hermitian{R}}=:modelDriven;
                  W::Union{Vector{R}, Nothing}=nothing) where R<:Real
 ```
 
@@ -231,7 +231,7 @@ Given a n × 3p leadfield matrix, where n is the number of electrodes and 3p is 
 return the **minimum norm regularized transfer matrix** with regularization `α`.
 
 if `C` is `:modelDriven` (default), compute the model driven solution, otherwise `C` must be the data covariance matrix and in this case compute the
-data-driven solution — see [here](https://github.com/Marco-Congedo/Loreta.jl/blob/master/Documents/Overview.pdf).
+data-driven solution — see [here](https://github.com/Marco-Congedo/Loreta.jl/blob/master/Documents/Overview.pdf). If `C` is a matrix, it must be flagged as `Symmetric` or as `Hermitian`  — see the 💡 [examples](#-examples).
 
 if optional keyword argument `W` is a vector of 3p non-negative weights, compute the **weighted minimum norm solution** instead. In this case `C` must be
 equal to `:modelDriven` (default), as a weighted data-driven solution is not defined.
@@ -254,14 +254,14 @@ equal to `:modelDriven` (default), as a weighted data-driven solution is not def
 ```julia
 function sLORETA(K::Matrix{R},
                  α::Real=0.,
-                 C::Union{Symbol, Matrix{R}}=:modelDriven) where R<:Real
+                 C::Union{Symbol, Symmetric{R}, Hermitian{R}}=:modelDriven) where R<:Real
 ```
 
 Given a n × 3p leadfield matrix, where n is the number of electrodes and 3p is the number of p voxels times 3 (the x, y, z source components),
 return the **sLORETA transfer matrix** with regularization `α`.
 
 if `C` is `:modelDriven` (default), compute the model driven solution, otherwise `C` must be the data covariance matrix and in this case compute the
-data-driven solution, which is similar (actually better) to the linearly constrained minimum variance beamformer — see [here](https://github.com/Marco-Congedo/Loreta.jl/blob/master/Documents/Overview.pdf).
+data-driven solution, which is similar (actually better) to the linearly constrained minimum variance beamformer — see [here](https://github.com/Marco-Congedo/Loreta.jl/blob/master/Documents/Overview.pdf). If `C` is a matrix, it must be flagged as `Symmetric` or as `Hermitian`  — see the 💡 [examples](#-examples).
 
 > [!IMPORTANT] 
 > If passed as a matrix, `C` must be non-singular. No check is performed.
@@ -281,7 +281,7 @@ data-driven solution, which is similar (actually better) to the linearly constra
 ```julia
 function eLORETA(K::Matrix{R},
                  α::Real=0.,
-                 C::Union{Symbol, Matrix{R}}=:modelDriven,
+                 C::Union{Symbol, Symmetric{R}, Hermitian{R}}=:modelDriven,
                  tol::Real=0.,
                  verbose=true) where R<:Real
 ```
@@ -290,7 +290,7 @@ Given a n × 3p leadfield matrix, where n is the number of electrodes and 3p is 
 return the **eLORETA transfer matrix** with regularization `α`.
 
 if `C` is `:modelDriven` (default), compute the model driven solution, otherwise `C` must be the data covariance matrix and in this case compute the
-data-driven solution.
+data-driven solution — see [here](https://github.com/Marco-Congedo/Loreta.jl/blob/master/Documents/Overview.pdf). If `C` is a matrix, it must be flagged as `Symmetric` or as `Hermitian`  — see the 💡 [examples](#-examples).
 
 The model-driven solution is iterative; the convergence at each iteration is printed unless optional keyword argument `verbose` is set to false.
 
@@ -315,7 +315,7 @@ to vanish for about half the significant digits.
 To use this package, all you will need is here below, where it is understood that you replace the example data matrix `X` and the leadfield matrix K with your own data and leadfield:
 
 ```julia
-using Xloreta
+using Xloreta, LinearAlgebra
 
 # example number of electrodes, data samples, voxels
 n, s, p = 20, 200, 2000
@@ -332,7 +332,7 @@ weights=abs.(randn(3p))
 # - - -
 
 # sample covariance matrix of the random EEG data
-C=(1/s)*(X'*X)
+C=Symmetric((1/s)*(X'*X))
 
 Tmn1 = minNorm(K, 1)    # unweighted model-driven min norm with α=1
 Tmn2 = minNorm(K, 10)   # unweighted model-driven min norm with α=10
