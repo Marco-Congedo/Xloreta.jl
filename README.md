@@ -57,13 +57,13 @@ Execute the following command in julia's REPL:
 
 We are given an EEG sensor potentials measurement
 
-x(t) ∈ ℝⁿ 
+𝐱(𝑡) ∈ ℝⁿ 
 
 at n electrodes referenced to the common average, in μV units, where t is time (samples);
 
 we wish to estimate the current density
 
-j(t) ∈ ℝᵖ 
+𝐣(𝑡) ∈ ℝᵖ 
 
 at p cortical grey matter voxels, in A/m² units, in the three Cartesian spatial directions (x, y, z).
 
@@ -71,31 +71,31 @@ We have therefore:
 
 **Forward equation** — determining the scalp voltage given the current distribution:
 
-x(t) = K c(t).
+𝐱(𝑡) = 𝐊 𝐣(𝑡).
 
 It is unique for a given leadfield matrix 
 
-K ∈ ℝⁿ×³ᵖ.
+𝐊 ∈ ℝⁿ×³ᵖ.
 
 Each column of the leadfield is the scalp field for unit-length dipole pointing in one of three orthogonal directions. The leadfield encapsulates a physical head model [^9] [^10].
 
 **Inverse solution** — estimating the current distribution given the scalp voltage:
 
-j(t) = T x(t).
+𝐣(𝑡) = 𝐓 𝐱(𝑡).
 
 It is not unique. Each inverse solution method yields a different transfer matrix
 
-T ∈ ℝ³ᵖ×ⁿ,
+𝐓 ∈ ℝ³ᵖ×ⁿ,
 
 the computation of which is the main purpose of this package.
 
 > [!IMPORTANT] 
 > A solution is said *genuine* or to *respect the measurement* if 
-> K T = I.
+> 𝐊 𝐓 = I.
 > The weighted minimum norm and eLORETA are genuine solutions, while sLORETA is not.
 >
 > Also, matrix 
-> T K ≠ I 
+> 𝐓 𝐊 ≠ 𝐈 
 > is called the resolution matrix [^11]. Its successive groups of three columns, one group per voxel, are called the point-spread functions. 
 > They allow one to ascertain whether the transfer matrix is capable of correctly localizing a single current dipole, regardless of its position (voxel) and orientation.
 >
@@ -132,17 +132,17 @@ function centeringMatrix(N::Int)
 ```
 The common average reference (CAR) operator for referencing EEG data potentials so that their mean across sensors (space) is zero at all samples.
 
-Let X be the s×n EEG recording, where s and n denote the number of samples and channels (sensors), respectively, and let Hₙ be the n×n centering matrix, then
+Let 𝐗 be the s×n EEG recording, where s and n denote the number of samples and channels (sensors), respectively, and let 𝐇ₙ be the n×n centering matrix, then
 
-Y = X Hₙ
+𝐘 = 𝐗 𝐇ₙ
 
 is the CAR (or centered) data.
 
-Hₙ is named the common average reference operator. It is given by — see for example p.67 in [^13] —
+𝐇ₙ is named the common average reference operator. It is given by — see for example p.67 in [^13] —
 
-Hₙ = Iₙ − (1/n) (1ₙ 1ₙᵀ)
+𝐇ₙ = 𝐈ₙ − (1/n) (𝟭ₙ 𝟭ₙᵀ)
 
-where Iₙ is the N-dimensional identity matrix and 1ₙ is the N-dimensional vector of ones.
+where 𝐈ₙ is the N-dimensional identity matrix and 𝟭ₙ is the n-dimensional vector of ones.
 
 Alias ℌ (U+210C, with escape sequence "frakH")
 
@@ -163,7 +163,7 @@ function cd2sm(j::Vector{R}) where R<:Real
 
 Return the current density squared magnitude vector comprised of 1/3 of the elements of the input current density vector j. The current density vector j holds successively the triplets (x, y, z). Return the successive sums (x²+y²+z²) for each triplet.
 
-The input vector j may contain any exact multiple of 3 number of elements.
+The input vector `j` may contain any exact multiple of 3 number of elements.
 
 > [!NOTE] 
 > Typically, the squared magnitude of the current density is the quantity of interest in neuroimaging studies.
