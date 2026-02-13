@@ -25,7 +25,7 @@ For all of them, the usual *model-driven* and the *data-driven* [^4] versions ar
 >
 > Those that are not familiar with the material, may want to start with this [introduction.](https://drive.google.com/file/d/0B_albC6Y6I9KczRoNjlsbWxKZ3c/view?usp=drive_web&resourcekey=0-LJGNC8sOIGlft_FJ565muA)
 
----
+![separator](Documents/separator.png)
 
 ## 🧭 Index
 
@@ -37,7 +37,7 @@ For all of them, the usual *model-driven* and the *data-driven* [^4] versions ar
 - 🌱 [Contribute](#-contribute)
 - 🎓 [References](#-references)
 
----
+![separator](Documents/separator.png)
 
 ## 📦 Installation
 
