@@ -25,7 +25,7 @@ For all of them, the usual *model-driven* and the *data-driven* [^4] versions ar
 >
 > Those that are not familiar with the material, may want to start with this [introduction.](https://drive.google.com/file/d/0B_albC6Y6I9KczRoNjlsbWxKZ3c/view?usp=drive_web&resourcekey=0-LJGNC8sOIGlft_FJ565muA)
 
----
+![separator](Documents/separator.png)
 
 ## 🧭 Index
 
@@ -37,7 +37,7 @@ For all of them, the usual *model-driven* and the *data-driven* [^4] versions ar
 - 🌱 [Contribute](#-contribute)
 - 🎓 [References](#-references)
 
----
+![separator](Documents/separator.png)
 
 ## 📦 Installation
 
@@ -51,7 +51,7 @@ Execute the following command in julia's REPL:
 
 [▲ index](#-index)
 
----
+![separator](Documents/separator.png)
 
 ## 🔣 Problem Statement, Notation and Nomenclature
 
@@ -109,6 +109,8 @@ the computation of which is the main purpose of this package. For details on the
 
 [▲ index](#-index)
 
+![separator](Documents/separator.png)
+
 ## 🔌 API
 
 The package exports the following functions:
@@ -124,6 +126,8 @@ The package exports the following functions:
 | [eLORETA](#eloreta)                   | compute eLORETA transfer matrix (model and data-driven)|
 
 [▲ index](#-index)
+
+![separator](Documents/separator.png)
 
 ### centeringMatrix
 
@@ -173,6 +177,7 @@ The input vector `j` may contain any exact multiple of 3 number of elements.
 [▲ index](#-index)
 
 ---
+
 ### psfLocError
 
 ```julia
@@ -190,6 +195,7 @@ Any time you create a transfer matrix `T` for a given leadfield matrix `K`, you 
 [▲ index](#-index)
 
 ---
+
 ### psfErrors
 
 ```julia
@@ -264,7 +270,6 @@ data-driven solution, which is similar (actually better) to the linearly constra
 > 
 > A suitable regularization parameter `α`>0 should be found by cross-validation or any other suitable method. Never assume an arbitrary value is suitable.
 
-
 [▲ API index](#-api)
 
 [▲ index](#-index)
@@ -303,7 +308,8 @@ to vanish for about half the significant digits.
 
 [▲ index](#-index)
 
----
+![separator](Documents/separator.png)
+
 ## 💡 Examples
 
 To use this package, all you will need is here below, where it is understood that you replace the example data matrix `X` and the leadfield matrix K with your own data and leadfield:
@@ -347,21 +353,24 @@ psfLocError(K, TeLor1) == 0 ? println("OK") : println("Error")
 
 [▲ index](#-index)
 
----
+![separator](Documents/separator.png)
+
 ## ✍️ About the Author
 
 [Marco Congedo](https://sites.google.com/site/marcocongedo) is a Research Director of [CNRS](http://www.cnrs.fr/en) (Centre National de la Recherche Scientifique), working at [UGA](https://www.univ-grenoble-alpes.fr/english/) (University of Grenoble Alpes). **Contact**: first name dot last name at gmail dot com.
 
 [▲ index](#-index)
 
----
+![separator](Documents/separator.png)
+
 ## 🌱 Contribute
 
 Please contact the author if you are interested in contributing.
 
 [▲ index](#-index)
 
----
+![separator](Documents/separator.png)
+
 ## 🎓 References
 
 [^1]: R. D., Pascual-Marqui, “Review of Methods for Solving the EEG Inverse Problem”, Int. J. Bioelectromag., vol. 1, no.1, pp. 75-86; 1999. [pdf](https://www.ijbem.org/volume1/number1/77-90.pdf).
