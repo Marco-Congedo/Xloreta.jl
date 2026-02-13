@@ -169,7 +169,7 @@ Return the n×n centering matrix.
 function cd2sm(j::Vector{R}) where R<:Real
 ```
 
-'cd2sm' stands for 'current density to squared magnitude'. 
+> 'cd2sm' stands for 'current density to squared magnitude'. 
 
 Return the current density squared magnitude vector comprised of 1/3 of the elements of the input current density vector `j`. The current density vector `j` holds successively the triplets (x, y, z). Return the successive sums (x²+y²+z²) for each triplet.
 
@@ -190,7 +190,7 @@ The input vector `j` may contain any exact multiple of 3 number of elements.
 psfLocError(K::Matrix{R}, T::Matrix{R}) where R<:Real
 ```
 
-'psfLocError' stands for 'point spread functions Localization Error'
+> 'psfLocError' stands for 'point spread functions Localization Error'
 
 Given a n × 3p leadfield matrix `K` and an associated 3p × n transfer matrix `T`, where n is the number of electrodes and 3p is the number of p voxels times 3 (the x, y, z source components), return the number of localization errors obtained by point spread functions — see 🔣 [here](#-problem-statement-notation-and-nomenclature).
 
@@ -207,7 +207,7 @@ Any time you create a sLORETA or eLORETA transfer matrix `T` for a given leadfie
 ```julia
 function psfErrors(K::Matrix{R}, T::Matrix{R}) where R<:Real
 ```
-'psfErrors' stands for 'point spread function Errors'
+> 'psfErrors' stands for 'point spread function Errors'
 
 Given a n × 3p leadfield matrix `K` and an associated 3p × n transfer matrix `T`, where n is the number of electrodes and 3p is the number of p voxels times 3 (the x, y, z source components), return the 3-tuple of vectors holding 3p errors obtained for each component (x, y, z) at each voxel (test locations):
 
