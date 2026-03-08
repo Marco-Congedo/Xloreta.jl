@@ -21,7 +21,7 @@ For all of them, the usual *model-driven* and the *data-driven* [^4] versions ar
 
 > All mathematical details can be found in [^1] [^2] [^3] [^4] [^8].
 >
-> An overview of the formula involved in the implementation is [here](https://github.com/Marco-Congedo/Xloreta.jl/blob/master/Documents/Overview.pdf).
+> An overview of the formula involved in the implementation is [here](https://drive.google.com/file/d/1QDKkZUuiY1sNz7kw2mqp7itObRYUxk1x/view?usp=drive_web).
 >
 > Those that are not familiar with the material, may want to start with this [introduction.](https://drive.google.com/file/d/0B_albC6Y6I9KczRoNjlsbWxKZ3c/view?usp=drive_web&resourcekey=0-LJGNC8sOIGlft_FJ565muA)
 > 
@@ -240,7 +240,7 @@ Given a n × 3p leadfield matrix, where n is the number of electrodes and 3p is 
 return the **minimum norm regularized transfer matrix** with regularization `α`.
 
 if `C` is `:modelDriven` (default), compute the model driven solution, otherwise `C` must be the data covariance matrix and in this case compute the
-data-driven solution — see [here](https://github.com/Marco-Congedo/Xloreta.jl/blob/master/Documents/Overview.pdf). If `C` is a matrix, it must be flagged as `Symmetric` or as `Hermitian`  — see the 💡 [examples](#-examples).
+data-driven solution — see [here](https://drive.google.com/file/d/1QDKkZUuiY1sNz7kw2mqp7itObRYUxk1x/view?usp=drive_web). If `C` is a matrix, it must be flagged as `Symmetric` or as `Hermitian`  — see the 💡 [examples](#-examples).
 
 if optional keyword argument `W` is a vector of 3p non-negative weights, compute the **weighted minimum norm solution** instead. In this case `C` must be
 equal to `:modelDriven` (default), as a weighted data-driven solution is not defined.
@@ -270,7 +270,7 @@ Given a n × 3p leadfield matrix, where n is the number of electrodes and 3p is 
 return the **sLORETA transfer matrix** with regularization `α`.
 
 if `C` is `:modelDriven` (default), compute the model driven solution, otherwise `C` must be the data covariance matrix and in this case compute the
-data-driven solution, which is similar (actually better) to the linearly constrained minimum variance beamformer — see [here](https://github.com/Marco-Congedo/Xloreta.jl/blob/master/Documents/Overview.pdf). If `C` is a matrix, it must be flagged as `Symmetric` or as `Hermitian`  — see the 💡 [examples](#-examples).
+data-driven solution, which is similar (actually better) to the linearly constrained minimum variance beamformer — see [here](https://drive.google.com/file/d/1QDKkZUuiY1sNz7kw2mqp7itObRYUxk1x/view?usp=drive_web). If `C` is a matrix, it must be flagged as `Symmetric` or as `Hermitian`  — see the 💡 [examples](#-examples).
 
 > [!IMPORTANT] 
 > If passed as a matrix, `C` must be non-singular. No check is performed.
@@ -299,7 +299,7 @@ Given a n × 3p leadfield matrix, where n is the number of electrodes and 3p is 
 return the **eLORETA transfer matrix** with regularization `α`.
 
 if `C` is `:modelDriven` (default), compute the model driven solution, otherwise `C` must be the data covariance matrix and in this case compute the
-data-driven solution — see [here](https://github.com/Marco-Congedo/Xloreta.jl/blob/master/Documents/Overview.pdf). If `C` is a matrix, it must be flagged as `Symmetric` or as `Hermitian`  — see the 💡 [examples](#-examples).
+data-driven solution — see [here](https://drive.google.com/file/d/1QDKkZUuiY1sNz7kw2mqp7itObRYUxk1x/view?usp=drive_web). If `C` is a matrix, it must be flagged as `Symmetric` or as `Hermitian`  — see the 💡 [examples](#-examples).
 
 The model-driven solution is iterative; the convergence at each iteration is printed unless optional keyword argument `verbose` is set to false.
 
