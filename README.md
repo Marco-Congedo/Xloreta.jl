@@ -104,9 +104,7 @@ the computation of which is the main purpose of this package. For details on the
 > where 𝐇ₙ is the [centeringMatrix](#centeringmatrix) in dimension n (since the leadfield is always to be centered).
 > The weighted minimum norm and eLORETA are genuine solutions, while sLORETA is not.
 >
-> Also, matrix 
-> 𝐓 𝐊 ≠ 𝐈 
-> is called the resolution matrix [^11]. Its successive groups of three columns, one group per voxel, are called the point-spread functions. 
+> Also, matrix 𝐓 𝐊 is called the resolution matrix [^11]. Its successive groups of three columns, one group per voxel, are called the point-spread functions. 
 > They allow to ascertain whether the transfer matrix is capable of correctly localizing a single current dipole, regardless of its position (voxel) and orientation.
 >
 > This is a minimal localization capability for an inverse solution, as it (unrealistically) assumes the absence of noise in the measurement and the existence of only one active dipole at a time. Nonetheless, it is a minimal requirement. sLORETA and eLORETA possess this property, while the minimum norm does not, like most inverse solution methods found in the literature, and thus should not be used.
