@@ -100,7 +100,8 @@ the computation of which is the main purpose of this package. For details on the
 
 > [!IMPORTANT] 
 > A solution is said *genuine* or to *respect the measurement* if 
-> 𝐊 𝐓 = 𝐈.
+> 𝐊 𝐓 = 𝐇ₙ,
+> where 𝐇ₙ is the [centeringMatrix](#centeringmatrix) in dimension n (since the leadfield is always to be centered).
 > The weighted minimum norm and eLORETA are genuine solutions, while sLORETA is not.
 >
 > Also, matrix 
@@ -251,6 +252,7 @@ equal to `:modelDriven` (default), as a weighted data-driven solution is not def
 > The columns of the leadfield matrix must be centered (common average reference).
 > 
 > A suitable regularization parameter `α`> 0 should be found by cross-validation or any other suitable method. Never assume an arbitrary value is suitable.
+> If a pre-whitening by a noise covariance is sought, apply the pre-whitening to the leadfield, then apply the transfer matrix to pre-whitened data.
 
 [▲ API index](#-api)
 
@@ -278,6 +280,7 @@ data-driven solution, which is similar (actually better) to the linearly constra
 > The columns of the leadfield matrix must be centered (common average reference).
 > 
 > A suitable regularization parameter `α`> 0 should be found by cross-validation or any other suitable method. Never assume an arbitrary value is suitable.
+> If a pre-whitening by a noise covariance is sought, apply the pre-whitening to the leadfield, then apply the transfer matrix to pre-whitened data.
 
 [▲ API index](#-api)
 
@@ -312,6 +315,7 @@ to vanish for about half the significant digits.
 > The columns of the leadfield matrix must be centered (common average reference).
 > 
 > A suitable regularization parameter `α`> 0 should be found by cross-validation or any other suitable method. Never assume an arbitrary value is suitable.
+> If a pre-whitening by a noise covariance is sought, apply the pre-whitening to the leadfield, then apply the transfer matrix to pre-whitened data.
 
 [▲ API index](#-api)
 
