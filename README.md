@@ -126,7 +126,7 @@ The package exports the following functions:
 | Function | Description |
 |:---------|:---------|
 | [centeringMatrix](#centeringmatrix)   | common average reference operator (alias: ℌ)   |
-| [c2cd](#cd2sm)                        | compute the squared magnitude of the current density given a current density vector |
+| [cd2sm](#cd2sm)                       | compute the squared magnitude of the current density given a current density vector |
 | [psfLocError](#psflocerror)           | point spread function localization error   |
 | [psfErrors](#psferrors)               | point spread function localization, spread and equalization errors |
 | [minnorm](#minnorm)                   | compute minimum norm transfer matrix (model and data-driven) |
