@@ -35,11 +35,11 @@ TsLor3 = sLORETA(K, 1, C)  # data-driven sLORETA with α=1
 end;
 
 TeLor1 = eLORETA(K, 1; verbose=false)     # model-driven eLORETA with α=1
-TeLor1 = eLORETA(K, 1; verbose=false)    # model-driven eLORETA with α=1
-TeLor1 = eLORETA(K, 1, C; verbose=false)  # data-driven eLORETA with α=1
+TeLor2 = eLORETA(K, 1; verbose=false)    # model-driven eLORETA with α=1
+TeLor3 = eLORETA(K, 1, C; verbose=false)  # data-driven eLORETA with α=1
 
 @testset "Testing Localization error of eLORETA..." begin
     @test psfLocError(K, TeLor1) == 0
-    @test psfLocError(K, TeLor1) == 0
-    @test psfLocError(K, TeLor1) == 0
+    @test psfLocError(K, TeLor2) == 0
+    @test psfLocError(K, TeLor3) == 0
 end;
