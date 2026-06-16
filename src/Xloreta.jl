@@ -16,6 +16,7 @@
 module Xloreta
 
 using LinearAlgebra, Statistics
+using PrecompileSignatures: @precompile_signatures
 
 export
     centeringMatrix, ℌ,
@@ -221,5 +222,7 @@ function eLORETA(K::Matrix{R},
     end
     return T
 end
+
+@precompile_signatures(Xloreta)
 
 end # module
